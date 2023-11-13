@@ -146,7 +146,7 @@ for (const expander of expanders) {
 tippy("*[data-tippy-content]");
 
 const prideFlag = document.querySelector(".pride-flag") as HTMLElement;
-const prideFlags = ["rainbow", "trans", "lesbian", "bi", "pan", "nb", "ace", "genderfluid", "logo"];
+const prideFlags = ["logo"];
 
 if (!prideFlags.includes(prideFlag.classList[1])) {
   prideFlag.className = "pride-flag logo";
