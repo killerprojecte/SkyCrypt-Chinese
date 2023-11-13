@@ -4,6 +4,12 @@ import * as helper from "../helper.js";
 
 const FEATURED_PROFILES = [
   {
+    // killerprojecte
+    uuid: "1786b6cf23e2449e8cc60e923d8c85ea",
+    type: "MAINTAINER",
+    message: "中文版维护者",
+  },
+  {
     // metalcupcake5
     uuid: "b44d2d5272dc49c28185b2d6a158d80a",
     type: "MAINTAINER",

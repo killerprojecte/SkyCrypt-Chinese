@@ -37,27 +37,27 @@ const skillItems = {
 
 const slayerInfo = {
   zombie: {
-    boss: "Revenant Horror",
+    boss: "恐惧亡魂 [Revenant Horror]",
     head: "/head/1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f",
   },
   spider: {
-    boss: "Tarantula Broodfather",
+    boss: "育父狼蛛 [Tarantula Broodfather]",
     head: "/head/9d7e3b19ac4f3dee9c5677c135333b9d35a7f568b63d1ef4ada4b068b5a25",
   },
   wolf: {
-    boss: "Sven Packmaster",
+    boss: "流浪狼王 [Sven Packmaster]",
     head: "/head/f83a2aa9d3734b919ac24c9659e5e0f86ecafbf64d4788cfa433bbec189e8",
   },
   enderman: {
-    boss: "Voidgloom Seraph",
+    boss: "虚暗天使 [Voidgloom Seraph]",
     head: "/head/1b09a3752510e914b0bdc9096b392bb359f7a8e8a9566a02e7f66faff8d6f89e",
   },
   blaze: {
-    boss: "Inferno Demonlord",
+    boss: "炼狱魔王 [Inferno Demonlord]",
     head: "/head/b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b",
   },
   vampire: {
-    boss: "Riftstalker Bloodfiend",
+    boss: "裂谷追猎者-血之恶魔 [Riftstalker Bloodfiend]",
     head: "/head/5aa29ea961757dc3c90bfabf302c5abe9d308fb4a7d3864e5788ad2cc9160aa2"
   }
 };
@@ -360,7 +360,7 @@ function getMetaDescription() {
 
 	// Base
 	description.push(
-		`${calculated.display_name} has been playing SkyBlock for ${moment(
+		`${calculated.display_name} 已经玩SkyBlock玩了 ${moment(
 			calculated.first_join.unix
 		).fromNow(true)}`
 	)
@@ -369,8 +369,8 @@ function getMetaDescription() {
 	if (items.armor_set) {
 		description.push(
 			highestRaritySword
-				? `, is wearing ${items.armor_set}`
-				: ` and is wearing ${items.armor_set}`
+				? `, 正在穿着 ${items.armor_set}`
+				: ` 和正在穿着 ${items.armor_set}`
 		)
 	}
 
@@ -378,10 +378,10 @@ function getMetaDescription() {
 	if (highestRaritySword) {
 		description.push(
 			items.armor_set
-				? ` and fighting with ${helper.aOrAn(
+				? ` 和使用武器 ${helper.aOrAn(
 						highestRaritySword
 				  )} ${highestRaritySword}`
-				: ` and is fighting with ${helper.aOrAn(
+				: ` 和使用武器 ${helper.aOrAn(
 						highestRaritySword
 				  )} ${highestRaritySword}`
 		)
@@ -397,7 +397,7 @@ function getDescription() {
 
 	// Fairy souls
 	description.push(
-		`🧚 ${calculated.fairy_souls.collected}/${calculated.fairy_souls.total} Fairy Souls`,
+		`🧚 ${calculated.fairy_souls.collected}/${calculated.fairy_souls.total} 仙女之魂`,
 		'\n'
 	)
 
@@ -458,7 +458,7 @@ function getDescription() {
 
 	// Slayers
 	if (calculated.slayer_coins_spent.total > 0) {
-		description.push('🤺 Slayer: ')
+		description.push('🤺 猎手: ')
 
 		for (const slayer of slayerOrder) {
 			if (!calculated.slayers[slayer]) {
@@ -478,7 +478,7 @@ function getDescription() {
     const line = []
 
     if (calculated.dungeons.catacombs?.level) {
-      line.push(`${skillEmojis["dungeons"]} Catacombs: ${calculated.dungeons.catacombs.level.level}`)
+      line.push(`${skillEmojis["dungeons"]} 地下墓穴: ${calculated.dungeons.catacombs.level.level}`)
     }
 
     if (calculated.dungeons.classes) {
@@ -495,7 +495,7 @@ function getDescription() {
   // Skyblock Level
   if (calculated.skyblock_level.xp !== 0 && calculated.skyblock_level.level !== 0) {
     description.push(
-      `🌟 Skyblock Level: ${calculated.skyblock_level.level + calculated.skyblock_level.progress}`,
+      `🌟 SkyBlock 等级: ${calculated.skyblock_level.level + calculated.skyblock_level.progress}`,
       '\n'
     )
   }
@@ -506,7 +506,7 @@ function getDescription() {
     // Skill Average
     if (calculated.average_level) {
       description.push(
-        `📚 Avg Skill Level: ${
+        `📚 平均技能等级: ${
           Math.floor(calculated.average_level * 10) / 10
         } `
       )
@@ -515,7 +515,7 @@ function getDescription() {
     // Dungeons classs average
     if (calculated.dungeons.class_average) {
       description.push(
-        `⚔️  Avg Class Level: ${
+        `⚔️  平均职业等级: ${
           Math.floor(calculated.dungeons.class_average.avrg_level_with_progress * 10) / 10
         } `
       )
@@ -527,10 +527,10 @@ function getDescription() {
 	// Weights
 	if (calculated.weight) {
 		description.push(
-			`💪 Senither Weight: ${Math.floor(
+			`💪 Senither 重量: ${Math.floor(
 				calculated.weight.senither.overall
 			).toLocaleString()} `,
-			`💪 Lily Weight: ${Math.floor(
+			`💪 Lily 重量: ${Math.floor(
 				calculated.weight.lily.total
 			).toLocaleString()}`
 		)
@@ -540,17 +540,17 @@ function getDescription() {
 	// Networth, Bank & purse
   if (calculated.networth.noInventory === false) {
       description.push(
-        `💸 Networth: ${helper.formatNumber(calculated.networth.networth, true)} `
+        `💸 资产: ${helper.formatNumber(calculated.networth.networth, true)} `
       )
   }
 
 	if (calculated.bank) {
 		description.push(
-			`🏦 Bank: ${helper.formatNumber(calculated.bank, true)} `
+			`🏦 银行: ${helper.formatNumber(calculated.bank, true)} `
 		)
 	}
 	description.push(
-    `💰 Purse: ${helper.formatNumber(calculated.purse, true)}`
+    `💰 钱包: ${helper.formatNumber(calculated.purse, true)}`
   )
 
   // Done!
@@ -602,7 +602,7 @@ const metaDescription = getMetaDescription()
 <html lang="en">
 
 <head>
-  <title><%= calculated.display_name %><% if(calculated.display_emoji){ %> <%= calculated.display_emoji %><% } %> | SkyCrypt</title>
+  <title><%= calculated.display_name %><% if(calculated.display_emoji){ %> <%= calculated.display_emoji %><% } %> | SkyCrypt 中文版</title>
   <meta name="description" content="<%= metaDescription %>">
   <link rel="icon" href="https://crafatar.com/avatars/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : calculated.uuid %>?size=32&overlay" sizes="32x32" type="image/png">
   <meta property="og:type" content="profile">
@@ -646,12 +646,12 @@ const metaDescription = getMetaDescription()
   <main id="wrapper" data-sticky-container>
     <% if(extra.cacheOnly) { %>
     <figure class="banner error">
-      <figcaption>Cache Only Mode!</figcaption>
+      <figcaption>缓存模式!</figcaption>
       <p>
-        SkyCrypt is <strong>only</strong> showing the last known state of user's profiles which may be outdated due to API maintenance.<br>
-        <%# <i>If a profile wasn't viewed/cached before, it can't be viewed.</i><br> %>
+        SkyCrypt 处于 <strong>仅</strong> 展示用户最后状态的模式 无论会造成信息的滞后<br>
+        <%# <i>如果一个档案未被查询或缓存, 这将不可用</i><br> %>
         <br>
-        For more info about Hypixel outages visit the official <a href="https://status.hypixel.net/" target="_blank" rel="noreferrer"> Hypixel Status</a>.
+        关于Hypixel API的更多信息请访问 <a href="https://status.hypixel.net/" target="_blank" rel="noreferrer"> Hypixel Status</a>
       </p>
     </figure>
     <% } %>
@@ -720,7 +720,7 @@ const metaDescription = getMetaDescription()
           </svg>
         </button>
         <% if(calculated.guild){ %><button class="additional-player-stat interactive-tooltip" data-tippy-content="
-        <% if(calculated.guild.rank){ %><span class='stat-name'>Rank: </span><span class='stat-value'><%= calculated.guild.rank %></span><br><br><% } %>
+        <% if(calculated.guild.rank){ %><span class='stat-name'>公会等级: </span><span class='stat-value'><%= calculated.guild.rank %></span><br><br><% } %>
         <span class='stat-name'>Guild Master: </span><% if(calculated.guild.gm) {%> <a href='/stats/<%= calculated.guild.gm %>' class='no-underline stat-value'><%= calculated.guild.gmUser.display_name %><%} else { %>None<% } %></a><br>
         <% if(calculated.guild.tag){ %><span class='stat-name'>Tag: </span><span class='stat-value'><%- helper.renderLore('§f'+calculated.guild.tag) %></span><br><% } %>
         <% if(calculated.guild.members){ %><span class='stat-name'>Members: </span><span class='stat-value'><%= typeof calculated.guild.members == 'number' ? calculated.guild.members : calculated.guild.members.length %></span><br><% } %>
@@ -728,22 +728,22 @@ const metaDescription = getMetaDescription()
         ">Guild: <%= calculated.guild.name %></button><% } %>
         <a href="https://plancke.io/hypixel/player/stats/<%= calculated.display_name %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link">Plancke</a>
         <div id="additional_socials">
-          <button data-copy-text="<%= calculated.uuid %>" class="copy-text additional-player-stat">Copy UUID</button>
+          <button data-copy-text="<%= calculated.uuid %>" class="copy-text additional-player-stat">复制UUID</button>
           <% if('DISCORD' in calculated.social){ %><button data-copy-text="<%= calculated.social.DISCORD %>" class="additional-player-stat copy-text external-discord external-icon"><%= calculated.social.DISCORD %></button><% } %>
-          <% if('TWITTER' in calculated.social){ %><a data-tippy-content="Twitter" href="<%= calculated.social.TWITTER %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-twitter"></a><% } %>
-          <% if('YOUTUBE' in calculated.social){ %><a data-tippy-content="YouTube" href="<%= calculated.social.YOUTUBE %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-youtube"></a><% } %>
+          <% if('TWITTER' in calculated.social){ %><a data-tippy-content="推特 (X)" href="<%= calculated.social.TWITTER %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-twitter"></a><% } %>
+          <% if('YOUTUBE' in calculated.social){ %><a data-tippy-content="油管" href="<%= calculated.social.YOUTUBE %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-youtube"></a><% } %>
           <% if('INSTAGRAM' in calculated.social){ %><a data-tippy-content="Instagram" href="<%= calculated.social.INSTAGRAM %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-instagram"></a><% } %>
           <% if('TWITCH' in calculated.social){ %><a data-tippy-content="Twitch" href="<%= calculated.social.TWITCH %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-twitch"></a><% } %>
-          <% if('HYPIXEL' in calculated.social){ %><a data-tippy-content="Hypixel Forums" href="<%= calculated.social.HYPIXEL %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-hypixel"></a><% } %>
+          <% if('HYPIXEL' in calculated.social){ %><a data-tippy-content="Hypixel 论坛" href="<%= calculated.social.HYPIXEL %>" target="_blank" rel="noreferrer" class="additional-player-stat external-link external-icon external-hypixel"></a><% } %>
           <button class="additional-player-stat" id="reveal_socials" aria-label="reveal socials"></button>
         </div>
       </div>
     </div>
     <% if(calculated.uuid == "b876ec32e396476ba1158438d83c67d4") { %>
     <div id="techno-support">
-      <span class="support-title">Thank you for everything, Technoblade.</span><br>
+      <span class="support-title">感谢你的一切, Technoblade.</span><br>
       <p class="support-text">
-        If you can, <a href="https://www.curesarcoma.org/donate/" target="_blank">donate</a> to the Sarcoma Foundation of America and <a href="https://technoblade.com/" target="_blank">buy</a> his merch.
+        如果你可以, 请<a href="https://www.curesarcoma.org/donate/" target="_blank">赞助</a> 美国肉瘤基金会 和 <a href="https://technoblade.com/" target="_blank">购买</a> 他的周边.
       </p>
     </div>
     <% } %>
@@ -765,26 +765,26 @@ const metaDescription = getMetaDescription()
 
       <div id="base_stats_wrapper">
         <div id="base_stats_container"></div>
-        <button id="show_stats">Show Stats</button>
+        <button id="show_stats">显示信息</button>
       </div>
 
       <div id="additional_stats_container">
         <% if(calculated.current_area){ %>
-        <div class="additional-stat"><span class="stat-name"><%= calculated.current_area_updated ? 'Current' : 'Last' %> Area: </span><span class="stat-value"><%= calculated.current_area %></span></div>
+        <div class="additional-stat"><span class="stat-name"><%= calculated.current_area_updated ? '当前所在' : '最近所在' %> 区域: </span><span class="stat-value"><%= calculated.current_area %></span></div>
         <% } %>
-        <div class="additional-stat"><span data-tippy-content='Joined on <local-time timestamp="<%= calculated.first_join.unix %>"></local-time>'><span class="stat-name">Joined: </span><span class="stat-value"><%= calculated.first_join.text %></span></span></div>
-        <div class="additional-stat"><span class="stat-name">Purse: </span><span class="stat-value"><%= helper.formatNumber(calculated.purse, true) %> Coin<%= Math.floor(calculated.purse) == 1 ? '': 's' %></span></div>
+        <div class="additional-stat"><span data-tippy-content='在 <local-time timestamp="<%= calculated.first_join.unix %> 加入SkyBlock"></local-time>'><span class="stat-name">加入时间: </span><span class="stat-value"><%= calculated.first_join.text %></span></span></div>
+        <div class="additional-stat"><span class="stat-name">钱包: </span><span class="stat-value"><%= helper.formatNumber(calculated.purse, true) %> Coin<%= Math.floor(calculated.purse) == 1 ? '': 's' %></span></div>
         <% if('bank' in calculated){ %>
-        <div class="additional-stat"><span class="stat-name">Bank Account: </span><span class="stat-value"><%= helper.formatNumber(calculated.bank, true) %> Coin<%= Math.floor(calculated.bank) == 1 ? '': 's' %></span></div>
+        <div class="additional-stat"><span class="stat-name">银行账户: </span><span class="stat-value"><%= helper.formatNumber(calculated.bank, true) %> Coin<%= Math.floor(calculated.bank) == 1 ? '': 's' %></span></div>
         <% } %>
         <% if('levels' in calculated && 'runecrafting' in calculated.levels){ %>
         <div class="additional-stat"><span data-tippy-content="
-          <span class='stat-name'>Total Skill XP: </span><span class='stat-value'><%= Math.round(calculated.total_skill_xp).toLocaleString() %></span>
-          <div class='tippy-explanation'>Total XP gained in all skills except Social and Runecrafting.</div>
-          <span class='stat-name'>Average Level: </span><span class='stat-value'><%= calculated.average_level.toFixed(2) %></span>
-          <div class='tippy-explanation'>Average skill level over all skills except Social and Runecrafting<% if('runecrafting' in calculated.levels){ %>, includes progress to next level<% } %>.</div><% if('runecrafting' in calculated.levels){ %><span class='stat-name'>Average Level without progress: </span><span class='stat-value'><%= calculated.average_level_no_progress.toFixed(2) %></span>
-          <div class='tippy-explanation'>Average skill level without including partial level progress.</div><% } %>
-          "><span class="stat-name">Average Skill Level: </span><span class="stat-value"><%= calculated.average_level.toFixed(2) %></span></span></div>
+          <span class='stat-name'>总技能经验: </span><span class='stat-value'><%= Math.round(calculated.total_skill_xp).toLocaleString() %></span>
+          <div class='tippy-explanation'>除社交和符文合成之外的所有技能中获得的总经验值</div>
+          <span class='stat-name'>平均等级: </span><span class='stat-value'><%= calculated.average_level.toFixed(2) %></span>
+          <div class='tippy-explanation'>除了社交和符文合成之外的所有技能的平均技能水平<% if('runecrafting' in calculated.levels){ %>, 包含到下一级的进度<% } %>.</div><% if('runecrafting' in calculated.levels){ %><span class='stat-name'>平均等级[不包含升级进度]: </span><span class='stat-value'><%= calculated.average_level_no_progress.toFixed(2) %></span>
+          <div class='tippy-explanation'>平均技能水平，不包括部分等级进度</div><% } %>
+          "><span class="stat-name">平均技能等级: </span><span class="stat-value"><%= calculated.average_level.toFixed(2) %></span></span></div>
         <% } %>
         <div class="additional-stat">
           <span data-tippy-content="<%= (calculated.fairy_souls.progress*100).toFixed(2) %>% of fairy souls found."><span class="stat-name">Fairy Souls: </span><span class="stat-value"><%= calculated.fairy_souls.collected %> / <%= calculated.fairy_souls.total %></span></span>
@@ -792,7 +792,7 @@ const metaDescription = getMetaDescription()
         <%
           const weightSystems = [
             {
-              name: "Senither Weight",
+              name: "Senither 重量",
               author: "Senither",
               skill: calculated.weight.senither.skill.total,
               slayer: calculated.weight.senither.slayer.total,
@@ -800,7 +800,7 @@ const metaDescription = getMetaDescription()
               total: calculated.weight.senither.overall,
             },
             {
-              name: "Lily Weight",
+              name: "Lily 重量",
               author: "LappySheep",
               skill: calculated.weight.lily.skill.base + calculated.weight.lily.skill.overflow,
               slayer: calculated.weight.lily.slayer,
@@ -819,21 +819,21 @@ const metaDescription = getMetaDescription()
             <div class="additional-stat">
               <span data-tippy-content="
                 <span class='stat-name'><%= weight.name %></span><br>
-                <span class='stat-info'>Weight calculations by <%= weight.author %></span>
+                <span class='stat-info'>重量计算由 <%= weight.author %> 提供</span>
                 <br/><br/>
-                <span class='stat-name'>Skill: </span>
+                <span class='stat-name'>技能: </span>
                 <span class='stat-value'>
                   <%= parseFloat(weight.skill.toFixed(2)).toLocaleString() %>
                 </span><br/>
-                <span class='stat-name'>Slayer: </span>
+                <span class='stat-name'>猎手: </span>
                 <span class='stat-value'>
                   <%= parseFloat(weight.slayer.toFixed(2)).toLocaleString() %>
                 </span><br/>
-                <span class='stat-name'>Dungeon: </span>
+                <span class='stat-name'>地牢: </span>
                 <span class='stat-value'>
                   <%= parseFloat(weight.dungeon.toFixed(2)).toLocaleString() %>
                 </span><br/><br/>
-                <span class='stat-name'>Total: </span>
+                <span class='stat-name'>总和: </span>
                 <span class='stat-value'>
                   <%= parseFloat(weight.total.toFixed(2)).toLocaleString() %>
                 </span>
@@ -846,27 +846,27 @@ const metaDescription = getMetaDescription()
         <% if (!calculated.networth.noInventory) {%>
         <div class="additional-stat">
           <span data-tippy-content="
-          <span class='stat-name'><%= 'Networth' %></span><br>
-          <span class='stat-info'>Networth calculations by SkyHelper</span>
+          <span class='stat-name'><%= '资产' %></span><br>
+          <span class='stat-info'>资产计算由 SkyHelper 提供</span>
           <br/><br/>
 
           <%
           const networth_values = {
-            purse: "Purse",
-            bank: "Bank",
-            sacks: "Sacks",
-            armor: "Armor",
-            equipment: "Equipment",
-            wardrobe: "Wardrobe",
-            inventory: "Inventory",
-            enderchest: "Ender Chest",
-            accessories: "Accessories",
-            personal_vault: "Personal Vault",
-            storage: "Storage",
-            pets: "Pets",
-            fishing_bag: "Fishing Bag",
-            potion_bag: "Potion Bag",
-            candy_inventory: "Candy Bag"
+            purse: "钱包",
+            bank: "银行",
+            sacks: "袋子",
+            armor: "盔甲",
+            equipment: "装备",
+            wardrobe: "衣柜",
+            inventory: "背包",
+            enderchest: "末影箱",
+            accessories: "饰品",
+            personal_vault: "个人金库",
+            storage: "仓库",
+            pets: "宠物",
+            fishing_bag: "钓鱼袋",
+            potion_bag: "药水袋",
+            candy_inventory: "糖果袋"
           }
 
           for (const [key, name] of Object.entries(networth_values)) {
@@ -883,16 +883,16 @@ const metaDescription = getMetaDescription()
             <% } %>
           <% } %>
           <br/>
-          <span class='stat-name'>Unsoulbound Networth: </span>
+          <span class='stat-name'>尚未灵魂绑定的资产: </span>
           <span class='stat-value'>
           <%= helper.formatNumber(parseFloat(calculated.networth.unsoulboundNetworth.toFixed(2))) %></span>
           </span><br/>
-          <span class='stat-name'>Total Networth: </span>
+          <span class='stat-name'>总资产: </span>
           <span class='stat-value'>
           <%= Math.floor(calculated.networth.networth).toLocaleString() %> (<%= helper.formatNumber(parseFloat(calculated.networth.networth.toFixed(2))) %>)</span>
           </span><br/>
         ">
-            <span class="stat-name">Networth: </span>
+            <span class="stat-name">资产: </span>
             <span class="stat-value"><%= helper.formatNumber(parseFloat(Math.round(calculated.networth.networth))) %></span></span>
         </div>
         <% } %>
@@ -918,11 +918,11 @@ const metaDescription = getMetaDescription()
           <skill-component skill="runecrafting" type="skill" icon="<%= skillItems.runecrafting %>"></skill-component>
           <skill-component skill="social" type="skill" icon="<%= skillItems.social %>"></skill-component>
           <% } else { %>
-          <div class="no-access">Skills from achievements across profiles. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">Enable Skills API</a> for more accurate data.</div>
+          <div class="no-access">技能数据来自跨存档的成就 <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">启用技能API</a> 以获取准确数据.</div>
           <% } %>
         </div>
         <% } else { %>
-        <div class="no-access"><%= calculated.display_name %> doesn't have skills access via API enabled. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">See here</a> how to enable full API access.</div>
+        <div class="no-access"><%= calculated.display_name %> 未启用技能API. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">查看这里</a> 了解如何打开所有API访问.</div>
         <% } %>
       </div>
     </div>
@@ -930,21 +930,21 @@ const metaDescription = getMetaDescription()
       <div id="nav_bar_line"></div>
       <div id="nav_bar_background"></div>
       <div id="nav_items_container">
-        <a class="nav-item" href="#Armor">Armor</a>
-        <% if(!items.no_inventory){ %><a class="nav-item" href="#Weapons">Weapons</a><% } %>
-        <% if(!items.no_inventory){ %><a class="nav-item" href="#Accessories">Accessories</a><% } %>
-        <% if(calculated.pets.length > 0){ %><a class="nav-item" href="#Pets">Pets</a><% } %>
-        <% if(!items.no_inventory){ %><a class="nav-item" href="#Inventory">Inventory</a><% } %>
-        <a class="nav-item" href="#Skills">Skills</a>
-        <a class="nav-item" href="#Dungeons">Dungeons</a>
-        <a class="nav-item" href="#Slayer">Slayer</a>
-        <a class="nav-item" href="#Minions">Minions</a>
-        <% if (calculated.bestiary !== null){ %><a class="nav-item" href="#Bestiary">Bestiary</a><% } %>
-        <% if(Object.keys(calculated.collections).length > 0){ %><a class="nav-item" href="#Collections">Collections</a><% } %>
-        <a class="nav-item" href="#Crimson_Isle">Crimson Isle</a>
-        <% if(calculated.rift !== null){ %><a class="nav-item" href="#Rift"><abbr title="RIft">Rift</abbr></a><% } %>
+        <a class="nav-item" href="#Armor">盔甲</a>
+        <% if(!items.no_inventory){ %><a class="nav-item" href="#Weapons">武器</a><% } %>
+        <% if(!items.no_inventory){ %><a class="nav-item" href="#Accessories">饰品</a><% } %>
+        <% if(calculated.pets.length > 0){ %><a class="nav-item" href="#Pets">宠物</a><% } %>
+        <% if(!items.no_inventory){ %><a class="nav-item" href="#Inventory">库存</a><% } %>
+        <a class="nav-item" href="#Skills">技能</a>
+        <a class="nav-item" href="#Dungeons">地牢</a>
+        <a class="nav-item" href="#Slayer">猎手</a>
+        <a class="nav-item" href="#Minions">小人</a>
+        <% if (calculated.bestiary !== null){ %><a class="nav-item" href="#Bestiary">百兽全书</a><% } %>
+        <% if(Object.keys(calculated.collections).length > 0){ %><a class="nav-item" href="#Collections">收集</a><% } %>
+        <a class="nav-item" href="#Crimson_Isle">绯红孤岛</a>
+        <% if(calculated.rift !== null){ %><a class="nav-item" href="#Rift"><abbr title="RIft">裂谷</abbr></a><% } %>
         <% if (calculated.profile.game_mode === "bingo") { %> <a class="nav-item" href="#Bingo"><abbr title="Bingo">Bingo</abbr></a> <% } %>
-        <% if(Object.keys(calculated.misc).length > 0){ %><a class="nav-item" href="#Misc"><abbr title="Miscellaneous">Misc</abbr></a><% } %>
+        <% if(Object.keys(calculated.misc).length > 0){ %><a class="nav-item" href="#Misc"><abbr title="Miscellaneous">杂项</abbr></a><% } %>
       </div>
     </div>
     <div class="stat-containers">
@@ -952,32 +952,32 @@ const metaDescription = getMetaDescription()
       const notAvailable = [];
 
       if(items.no_inventory)
-        notAvailable.push('Weapons', 'Accessories', 'Inventory', 'Storage');
+        notAvailable.push('武器', '饰品', '库存', '仓库');
 
       if(items.no_personal_vault)
-        notAvailable.push('Personal Vault');
+        notAvailable.push('个人金库');
 
       if(Object.keys(calculated.collections).length == 0)
-        notAvailable.push('Collections');
+        notAvailable.push('收集');
     %>
       <% if (notAvailable.length > 0 || ['ironman', 'bingo', 'island'].includes(calculated.profile.game_mode)) { %>
       <div class="stat-container info-container-wrapper">
         <div class="info-container">
           <div class="info-header">Notice</div>
           <% if(notAvailable.length > 0){ %>
-          <%= notAvailable.join(', ') %> not available for <%= calculated.display_name %> due to limited API access.<br><span><a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">See here</a> how to enable full API access.</span>
+          <%= notAvailable.join(', ') %> 数据在 <%= calculated.display_name %> 上不可用 API访问已被限制.<br><span><a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">查看这里</a> 了解如何打开所有API访问.</span>
           <% } %>
           <% if(calculated.profile.game_mode == 'ironman'){ %>
           <% if(notAvailable.length > 0){ %><br><br><% } %>
-          This is an <strong>Ironman</strong> profile. The player cannot use the auction house, bazaar, trade, or pick up drops from other players.
+          这是一个 <strong>Ironman 铁人</strong> 档案. 该玩家无法使用拍卖行, 集市, 交易, 和 捡起其他玩家掉落的物品.
           <% } %>
           <% if(calculated.profile.game_mode == 'bingo'){ %>
           <% if(notAvailable.length > 0){ %><br><br><% } %>
-          This is a <strong>Bingo</strong> profile. The player cannot spend gems, use the auction house, bazaar, trade, or pick up drops from other players.
+          这是一个 <strong>Bingo</strong> profile. The player cannot spend gems, use the auction house, bazaar, trade, or pick up drops from other players.
           <% } %>
           <% if(calculated.profile.game_mode == 'island'){ %>
           <% if(notAvailable.length > 0){ %><br><br><% } %>
-          This is a <strong>Stranded</strong> profile. The player cannot leave their skyblock island or trade with other players.
+          这是一个 <strong>Stranded 孤岛</strong> 档案. 该玩家无法离开他们自己的岛屿 和 无法与其他玩家交易.
           <% } %>
         </div>
       </div>
@@ -985,14 +985,14 @@ const metaDescription = getMetaDescription()
 
       <div class="stat-container stat-armor">
         <a class="stat-anchor" id="Armor"></a>
-        <h2 class="stat-header">Armor</h2>
+        <h2 class="stat-header">盔甲</h2>
         <div class="stat-content">
           <% if(items.armor.length == 0){ %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have any armor equipped.</div>
+          <div class="no-access"><%= calculated.display_name %> 尚未装备任何盔甲.</div>
           <% }else{ %>
           <% if(items.armor_set) { %>
           <p class="stat-raw-values">
-            <span class="stat-name">Set: </span><span class="stat-value piece-<%= items.armor_set_rarity %>-fg"><%= items.armor_set %></span>
+            <span class="stat-name">套装: </span><span class="stat-value piece-<%= items.armor_set_rarity %>-fg"><%= items.armor_set %></span>
           </p>
           <% } %>
           <div class="pieces">
@@ -1007,9 +1007,9 @@ const metaDescription = getMetaDescription()
             <div data-bonus-stats="armor"></div>
           </div>
           <% } %>
-          <p class="stat-sub-header">Equipment</p>
+          <p class="stat-sub-header">装备</p>
           <% if(Object.keys(items.equipment).length == 0){ %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have any equipment equipped.</div>
+          <div class="no-access"><%= calculated.display_name %> 尚未穿戴任何装备.</div>
           <% }else{ %>
           <div class="pieces">
             <% for(const item of items.equipment.slice().reverse()){ %>
@@ -1026,7 +1026,7 @@ const metaDescription = getMetaDescription()
         </div>
       </div>
       <% if(items.wardrobe.length > 0){ %>
-      <p class="stat-sub-header">Wardrobe</p>
+      <p class="stat-sub-header">衣柜</p>
       <div class="pieces wardrobe">
         <% for(const set of items.wardrobe){ %>
         <div class="wardrobe-set">
@@ -1051,19 +1051,19 @@ const metaDescription = getMetaDescription()
       <% if(!items.no_inventory){ %>
       <div class="stat-container stat-weapons">
         <a class="stat-anchor" id="Weapons"></a>
-        <h2 class="stat-header">Weapons</h2>
+        <h2 class="stat-header">武器</h2>
         <div class="stat-content">
           <% if (items.weapons.length == 0) { %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have any weapons.</div>
+          <div class="no-access"><%= calculated.display_name %> 未拥有任何武器.</div>
           <% } else { %>
           <% if (items.highest_rarity_sword) { %>
           <p class="stat-raw-values">
-            <span class="stat-name">Active Weapon: </span>
+            <span class="stat-name">在使用的武器: </span>
             <span class="stat-active-weapon stat-value"><%- helper.renderLore(items.highest_rarity_sword.tag.display.Name) %></span>
           </p>
           <% } else if (items.weapons.length > 0) { %>
           <p class="stat-raw-values">
-            <span class="stat-name">Active Weapon: </span><span class="stat-active-weapon stat-value piece-common-fg">None</span>
+            <span class="stat-name">在使用的武器: </span><span class="stat-active-weapon stat-value piece-common-fg">无</span>
           </p>
           <% } %>
           <div class="pieces">
@@ -1090,12 +1090,12 @@ const metaDescription = getMetaDescription()
       </div>
       <div class="stat-container stat-accessories">
         <a class="stat-anchor" id="Accessories"></a>
-        <h2 class="stat-header">Accessories</h2>
+        <h2 class="stat-header">饰品</h2>
         <div class="stat-content">
           <% if(items.no_inventory){ %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have inventory access via API enabled. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">See here</a> how to enable full API access.</div>
+          <div class="no-access"><%= calculated.display_name %> 未启用库存API权限. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">查看这里</a> 了解如何打开所有API访问.</div>
           <% }else if(items.accessories.length == 0){ %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have any accessories.</div>
+          <div class="no-access"><%= calculated.display_name %> 未有任何饰品.</div>
           <% }else{ %>
           <p class="stat-raw-values">
             <%
@@ -1104,13 +1104,13 @@ const metaDescription = getMetaDescription()
               const maxRecombTalis = items.accessories.filter(a => a.isUnique && a.extra?.recombobulated).length >= constants.RECOMBABLE_ACCESSORIES_COUNT ? 'golden-text': ''
             %>
 
-            <span class="stat-name <%= maxTalis %>">Unique Accessories: </span>
+            <span class="stat-name <%= maxTalis %>">独立的饰品: </span>
             <span class="stat-value <%= maxTalis %>"><%= talis %> / <%= constants.UNIQUE_ACCESSORIES_COUNT %></span>
             <br>
-            <span class="stat-name <%= maxTalis %>">Completion: </span>
+            <span class="stat-name <%= maxTalis %>">已获得: </span>
             <span class="stat-value percent <%= maxTalis %>"><%= Math.round(talis / constants.UNIQUE_ACCESSORIES_COUNT * 100) %></span>
             <br>
-            <span class="stat-name <%= maxRecombTalis %>">Recombobulated: </span>
+            <span class="stat-name <%= maxRecombTalis %>">已重铸: </span>
             <span class="stat-value <%= maxRecombTalis %>"><%= items.accessories.filter(a => a.isUnique && a.extra?.recombobulated).length %> / <%= constants.RECOMBABLE_ACCESSORIES_COUNT %></span>
             <br>
             <%
@@ -1128,8 +1128,8 @@ const metaDescription = getMetaDescription()
                 const mp_total = Object.values(player_magical_power).reduce((a, b) => a + b) + mp_hegemony + mp_abiphone + mp_rift_prism - 22;
               %>
             <span data-tippy-content="
-              Accessories Breakdown<br>
-              <span style='color: var(--§8);' class='grey-text'>From your accessory bag</span><br><br>
+              饰品明细<br>
+              <span style='color: var(--§8);' class='grey-text'>来自配件袋</span><br><br>
               <span style='color: var(--§6);' class='grey-text'>22 MP</span> × <span style='color: var(--§d);' class='grey-text'><%= rarities.mythic %> Accs.</span> = <span style='color: var(--§6);' class='grey-text'><%= player_magical_power.mythic.toLocaleString() %> MP</span><br>
               <span style='color: var(--§6);' class='grey-text'>16 MP</span> × <span style='color: var(--§6);' class='grey-text'><%= rarities.legendary %> Accs.</span> = <span style='color: var(--§6);' class='grey-text'><%= player_magical_power.legendary.toLocaleString() %> MP</span><br>
               <span style='color: var(--§6);' class='grey-text'>12 MP</span> × <span style='color: var(--§5);' class='grey-text'><%= rarities.epic %> Accs.</span> = <span style='color: var(--§6);' class='grey-text'><%= player_magical_power.epic.toLocaleString() %> MP</span><br>
@@ -1143,15 +1143,15 @@ const metaDescription = getMetaDescription()
                 <span style='color: var(--§<%= constants.RARITY_COLORS[rarities.hegemony.rarity] %>);' class='grey-text'>Hegemony Artifact</span> = <span style='color: var(--§6);' class='grey-text'>+<%= mp_hegemony.toLocaleString() %> MP</span><br>
               <% } %>
               <% if (mp_abiphone) { %>
-                <span style='color: var(--§<%= constants.RARITY_COLORS["rare"] %>);' class='grey-text'>Abicase</span> = <span style='color: var(--§6);' class='grey-text'>+<%= mp_abiphone %> MP</span><br>
+                <span style='color: var(--§<%= constants.RARITY_COLORS["rare"] %>);' class='grey-text'>电话通讯录</span> = <span style='color: var(--§6);' class='grey-text'>+<%= mp_abiphone %> MP</span><br>
               <% } %>
               <% if (mp_rift_prism) { %>
-                <span style='color: var(--§<%= constants.RARITY_COLORS["rare"] %>);' class='grey-text'>Rift Prism:</span> = <span style='color: var(--§6);' class='grey-text'>+<%= mp_rift_prism %> MP</span><br>
+                <span style='color: var(--§<%= constants.RARITY_COLORS["rare"] %>);' class='grey-text'>裂谷棱镜:</span> = <span style='color: var(--§6);' class='grey-text'>+<%= mp_rift_prism %> MP</span><br>
               <% } %>
               <br>
-              Total: <span style='color: var(--§6);' class='grey-text'><%= mp_total.toLocaleString() %> Magical Power</span>
+              总: <span style='color: var(--§6);' class='grey-text'><%= mp_total.toLocaleString() %> 魔术能量</span>
               ">
-              <span class="stat-name">Magical Power: </span><span class="stat-value"><%= mp_total.toLocaleString() %></span>
+              <span class="stat-name">魔术能量: </span><span class="stat-value"><%= mp_total.toLocaleString() %></span>
             </span>
           </p>
           <% if(items.accessories.find(a => !a.isInactive) != undefined){ %>
@@ -1175,7 +1175,7 @@ const metaDescription = getMetaDescription()
           <% const inactiveAccessories = items.accessories.filter(a => a.isInactive === true); %>
           <% if (inactiveAccessories.length > 0) { %>
           <div class="accessory-list">
-            <p class="stat-sub-header">Inactive Accessories</p>
+            <p class="stat-sub-header">未使用的饰品</p>
             <% for (const item of inactiveAccessories) { %>
             <div tabindex="0" data-item-id="<%= item.itemId %>" class="rich-item piece piece-<%= item.rarity %>-bg <%= getRarityUpgradeClass(item) %>">
               <% if(rarityOrder.indexOf(item.rarity) <= 4){ %>
@@ -1191,12 +1191,12 @@ const metaDescription = getMetaDescription()
             <!-- Why does this exist? Won't touch it -->
             if(items.accessories.length == 1) %> <br>
 
-          <button class="stat-sub-header extender" aria-controls="missing-accessories" aria-expanded="false">Missing Accessories</button>
+          <button class="stat-sub-header extender" aria-controls="missing-accessories" aria-expanded="false">缺失的饰品</button>
           <div class="pieces extendable" id="missing-accessories">
             <br>
 
             <% if(calculated.missingAccessories.missing.length > 0) { %>
-            <p class="stat-sub-header">Missing Accessories<span data-tippy-content='Missing accessories that are <strong>not</strong> upgrades of another accessory.'></span></p>
+            <p class="stat-sub-header">缺失的饰品<span data-tippy-content='缺失 <strong>非</strong> 其他配件升级的配件.'></span></p>
             <% for(const [index, accessory] of calculated.missingAccessories.missing.entries()){ %>
             <div tabindex="0" data-missing-accessory-index="<%= index %>" class="rich-item piece piece-<%= accessory.rarity %>-bg missing-accessory">
               <div style='background-image: url("<%= accessory.texture_path %>")' class="piece-icon item-icon custom-icon"></div>
@@ -1205,7 +1205,7 @@ const metaDescription = getMetaDescription()
             <% } %>
 
             <% if (calculated.missingAccessories.upgrades.length > 0) { %>
-            <p class="stat-sub-header">Missing Accessory Upgrades<span data-tippy-content='Missing accessories that are upgrades of a lower tier accessory.'></span></p>
+            <p class="stat-sub-header">缺失的饰品升级<span data-tippy-content='缺失配件为低等级的配件.'></span></p>
             <% for(const [index, accessory] of calculated.missingAccessories.upgrades.entries()){ %>
             <div tabindex="0" data-upgrade-accessory-index="<%= index %>" class="rich-item piece piece-<%= accessory.rarity %>-bg missing-accessory">
               <div style='background-image: url("<%= accessory.texture_path %>")' class="piece-icon item-icon custom-icon"></div>
@@ -1259,10 +1259,10 @@ const metaDescription = getMetaDescription()
           %>
           <p class="stat-raw-values">
             <% max = uniquePets.length >= totalPets ? 'golden-text': '' %>
-            <span class="stat-name <%= max %>">Unique Pets: </span><span class="stat-value <%= max %>"><%= uniquePets.length %> / <%= totalPets %></span><br>
+            <span class="stat-name <%= max %>">独立的宠物: </span><span class="stat-value <%= max %>"><%= uniquePets.length %> / <%= totalPets %></span><br>
 
             <% max = userUniqueSkins >= totalUniqueSkins ? 'golden-text': '' %>
-            <span class="stat-name <%= max %>">Unique Pet Skins: </span><span class="stat-value <%= max %>"><%= userUniqueSkins %> / <%= totalUniqueSkins %></span><br>
+            <span class="stat-name <%= max %>">独立的宠物皮肤: </span><span class="stat-value <%= max %>"><%= userUniqueSkins %> / <%= totalUniqueSkins %></span><br>
             <%
               const petRewards = constants.PET_REWARDS
               const petScore = calculated.petScore
@@ -1270,8 +1270,8 @@ const metaDescription = getMetaDescription()
               max = petScore >= Math.max(...Object.keys(petRewards)) ? 'golden-text' : ''
             %>
             <span data-tippy-content="
-              Pet score is calculated based on how many unique pets you have and the rarity of these pets.<br><br>
-              You gain an additional score for each max level pet you have!<br><br>
+              宠物分数是根据您拥有的独立宠物数量以及这些宠物的稀有度来计算的.<br><br>
+              您拥有的每只最高等级宠物都会获得额外分数!<br><br>
               <table>
               <%
               const entries = Object.entries(petRewards)
@@ -1282,19 +1282,19 @@ const metaDescription = getMetaDescription()
                 <% const [score, {magic_find}] = entries[i] %>
 
                 <% if (score === reduced) { %>
-                  <tr><td><%= score %> Score: </td><td><span class='color-magic-find grey-text'>+<%= magic_find %> Magic Find</span><span style='color: var(--§5);' class='grey-text'> «</span></td>
+                  <tr><td><%= score %> 分: </td><td><span class='color-magic-find grey-text'>+<%= magic_find %> Magic Find</span><span style='color: var(--§5);' class='grey-text'> «</span></td>
                 <% } else { %>
-                  <tr><td><%= score %> Score: </td><td><span class='color-magic-find grey-text'>+<%= magic_find %> Magic Find</span></td>
+                  <tr><td><%= score %> 分: </td><td><span class='color-magic-find grey-text'>+<%= magic_find %> Magic Find</span></td>
                 <% } %>
               <% } %>
 
               </table>
-            "><span class="stat-name <%= max %>">Pet Score: </span><span class="stat-value <%= max %>"><%= petScore %></span></span><% if(calculated.pet_score_bonus.magic_find > 0){ %><span class="grey-text color-magic-find"> (+<%= calculated.pet_score_bonus.magic_find %> <abbr title="Magic Find">MF</abbr>)</span><% } %><br>
+            "><span class="stat-name <%= max %>">宠物分数: </span><span class="stat-value <%= max %>"><%= petScore %></span></span><% if(calculated.pet_score_bonus.magic_find > 0){ %><span class="grey-text color-magic-find"> (+<%= calculated.pet_score_bonus.magic_find %> <abbr title="Magic Find">MF</abbr>)</span><% } %><br>
 
             <% max = totalCandiesUsed === 0 ? 'golden-text': '' %>
-            <span class="stat-name <%= max %>">Total Candies Used: </span><span class="stat-value <%= max %>"><%= totalCandiesUsed %></span><br>
+            <span class="stat-name <%= max %>">总使用的糖果: </span><span class="stat-value <%= max %>"><%= totalCandiesUsed %></span><br>
 
-            <span class="stat-name">Total Pet XP: </span><span class="stat-value"><%= helper.formatNumber(totalPetXp, true) %></span>
+            <span class="stat-name">总宠物经验: </span><span class="stat-value"><%= helper.formatNumber(totalPetXp, true) %></span>
           </p>
           <%
             const petsToShow = 100
@@ -1303,7 +1303,7 @@ const metaDescription = getMetaDescription()
             const otherPets = calculated.pets.filter(pet => !pet.active).slice(0, petsToShowLimit)
           %>
           <% if (activePet) { %>
-          <p class="stat-sub-header">Active Pet</p>
+          <p class="stat-sub-header">在使用的宠物</p>
           <div class="pieces">
             <div tabindex="0" data-pet-index="0" class="active-pet rich-item piece piece-<%= activePet.rarity %>-bg <%= getRarityUpgradeClass(activePet) %>">
               <% if (rarityOrder.indexOf(activePet.rarity) <= 4) { %>
@@ -1319,7 +1319,7 @@ const metaDescription = getMetaDescription()
           <div data-bonus-stats="pet"></div>
           <% } %>
           <% if (otherPets) { %>
-          <p class="stat-sub-header"><%= activePet ? 'Other Pets' : '' %></p>
+          <p class="stat-sub-header"><%= activePet ? '其它宠物' : '' %></p>
           <div class="pieces">
             <% for(const [index, pet] of otherPets.entries()) { %>
 
@@ -1328,7 +1328,7 @@ const metaDescription = getMetaDescription()
                   (!activePet && index === petsToShow)
                 ) { %>
           </div>
-          <button class="stat-sub-header extender" aria-controls="showmore-pets" aria-expanded="false">Show More Pets</button>
+          <button class="stat-sub-header extender" aria-controls="showmore-pets" aria-expanded="false">显示更多宠物</button>
           <div class="pieces extendable" id="showmore-pets">
             <% } %>
 
@@ -1346,7 +1346,7 @@ const metaDescription = getMetaDescription()
           <% if(calculated.pets.length == 1) { %>
           <br>
           <% } %>
-          <button class="stat-sub-header extender" aria-controls="missing-pets" aria-expanded="false">Missing Pets</button>
+          <button class="stat-sub-header extender" aria-controls="missing-pets" aria-expanded="false">缺失的宠物</button>
           <div class="pieces extendable" id="missing-pets">
             <% for(const [index, pet] of calculated.missingPets.entries()) { %>
             <div tabindex="0" data-missing-pet-index="<%= index %>" class="rich-item piece piece-<%= pet.rarity %>-bg missing-pet">
@@ -1361,10 +1361,10 @@ const metaDescription = getMetaDescription()
       <% if(!items.no_inventory){ %>
       <div class="stat-container stat-inventory">
         <a class="stat-anchor" id="Inventory"></a>
-        <h2 class="stat-header">Inventory</h2>
+        <h2 class="stat-header">库存</h2>
         <div class="stat-content">
           <% if(items.no_inventory){ %>
-          <div class="no-access"><%= calculated.display_name %> doesn't have inventory access via API enabled. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">See here</a> how to enable full API access.</div>
+          <div class="no-access"><%= calculated.display_name %> 未启用库存API权限. <a target="_blank" class="enable-api" href="/resources/video/enable-api.mp4">查看这里</a> 了解如何打开所有API访问.</div>
           <% }else{ %>
           <div id="inventory_container">
             <div id="inventory_header">
@@ -1375,55 +1375,55 @@ const metaDescription = getMetaDescription()
                   %>
                 <button class="inventory-tab active-inventory" data-inventory-type="inventory">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url('<%= inventoryIconUrl %>')"></div>
-                  <div class="inventory-tab-name"><abbr title="Inventory">Inv</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Inventory">背包</abbr></div>
                 </button>
 
                 <% if(items.storage.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="storage">
                   <div class="inventory-tab-icon item-icon icon-54_0"></div>
-                  <div class="inventory-tab-name">Storage</div>
+                  <div class="inventory-tab-name">仓库</div>
                 </button>
                 <% } %>
 
                 <% if(items.enderchest.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="enderchest">
                   <div class="inventory-tab-icon item-icon icon-130_0"></div>
-                  <div class="inventory-tab-name"><abbr title="Enderchest">Ender</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Enderchest">末影箱</abbr></div>
                 </button>
                 <% } %>
 
                 <% if(items.personal_vault.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="personal_vault">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url(/head/f7aadff9ddc546fdcec6ed5919cc39dfa8d0c07ff4bc613a19f2e6d7f2593)"></div>
-                  <div class="inventory-tab-name"><abbr title="Personal Vault">Vault</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Personal Vault">个人金库</abbr></div>
                 </button>
                 <% } %>
 
                 <% if(items.accessory_bag.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="accessory_bag">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url(/head/961a918c0c49ba8d053e522cb91abc74689367b4d8aa06bfc1ba9154730985ff)"></div>
-                  <div class="inventory-tab-name"><abbr title="Accessory Bag">Accs</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Accessory Bag">饰品</abbr></div>
                 </button>
                 <% } %>
 
                 <% if(items.potion_bag.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="potion_bag">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url(/head/9f8b82427b260d0a61e6483fc3b2c35a585851e08a9a9df372548b4168cc817c)"></div>
-                  <div class="inventory-tab-name"><abbr title="Potion Bag">Pots</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Potion Bag">药水袋</abbr></div>
                 </button>
                 <% } %>
 
                 <% if(items.fishing_bag.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="fishing_bag">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url(/head/eb8e297df6b8dffcf135dba84ec792d420ad8ecb458d144288572a84603b1631)"></div>
-                  <div class="inventory-tab-name"><abbr title="Fishing Bag">Fish</abbr></div>
+                  <div class="inventory-tab-name"><abbr title="Fishing Bag">钓鱼袋</abbr></div>
                 </button>
                 <% } %>
 
                 <% if(items.quiver.length > 0){ %>
                 <button class="inventory-tab" data-inventory-type="quiver">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url(/head/4cb3acdc11ca747bf710e59f4c8e9b3d949fdd364c6869831ca878f0763d1787)"></div>
-                  <div class="inventory-tab-name">Quiver</div>
+                  <div class="inventory-tab-name">箭袋</div>
                 </button>
                 <% } %>
               </div>
@@ -1436,7 +1436,7 @@ const metaDescription = getMetaDescription()
       <% } %>
       <div class="stat-container stat-skills">
         <a class="stat-anchor" id="Skills"></a>
-        <h2 class="stat-header">Skills</h2>
+        <h2 class="stat-header">技能</h2>
         <div class="stat-content">
 
           <div class="stat-mining">

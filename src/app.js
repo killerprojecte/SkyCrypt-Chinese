@@ -279,6 +279,16 @@ app.all("/stats/:player/:profile?", async (req, res, next) => {
       debugId,
     });
 
+    if (calculated.guild) {
+      if (calculated.guild.rank === "Guild Master") {
+        calculated.guild.rank = "公会会长"
+      } else if (calculated.guild.rank === "Officer") {
+        calculated.guild.rank = "公会管理"
+      } else if (calculated.guild.rank === "Member") {
+        calculated.guild.rank = "公会成员"
+      }
+    }
+
     if (isFoolsDay) {
       calculated.skin_data.skinurl =
         "http://textures.minecraft.net/texture/b4bd832813ac38e68648938d7a32f6ba29801aaf317404367f214b78b4d4754c";
