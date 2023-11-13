@@ -14,7 +14,7 @@ export class BonusStats extends LitElement {
 
     return html`
       <p>
-        <span class="stat-name">Bonus: </span>
+        <span class="stat-name">增益: </span>
         ${unsafeHTML(stats.join('<span class="bonus-divider" role="separator">//</span>'))}
       </p>
     `;

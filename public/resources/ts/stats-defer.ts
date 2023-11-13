@@ -579,13 +579,13 @@ favoriteElement.addEventListener("click", () => {
     if (cookieArray.includes(uuid)) {
       cookieArray.splice(cookieArray.indexOf(uuid), 1);
 
-      favoriteNotification.setContent("Removed favorite!");
+      favoriteNotification.setContent("已移除收藏!");
     } else if (cookieArray.length >= constants.MAX_FAVORITES) {
-      favoriteNotification.setContent(`You can only have ${constants.MAX_FAVORITES} favorites!`);
+      favoriteNotification.setContent(`你最多只能有 ${constants.MAX_FAVORITES} 个收藏档案!`);
     } else {
       cookieArray.push(uuid);
 
-      favoriteNotification.setContent("Added favorite!");
+      favoriteNotification.setContent("已收藏该档案!");
     }
     setCookie("favorite", cookieArray.join(","), 365);
     checkFavorite();

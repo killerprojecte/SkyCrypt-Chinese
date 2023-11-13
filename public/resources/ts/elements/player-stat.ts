@@ -55,10 +55,10 @@ export class PlayerStat extends LitElement {
     }
 
     tooltip.push(
-      `<span class="stat-name">Base ${name}: </span>`,
+      `<span class="stat-name">基础 ${name}: </span>`,
       `<span class="stat-value">${helper.round(data.base, 1).toLocaleString()}${suffix}</span>`,
       "<br/>",
-      "<span class='tippy-explanation'>Base value every player has at the beginning of their SkyBlock adventure!</span>"
+      "<span class='tippy-explanation'>每个玩家在 SkyBlock 冒险开始时都有的基础值!</span>"
     );
 
     if (value - data.base > 0) {
@@ -75,10 +75,10 @@ export class PlayerStat extends LitElement {
       tooltip.push(
         "<br/>",
         "<br/>",
-        `<span class="stat-name">Bonus ${name}: </span>`,
+        `<span class="stat-name">额外 ${name}: </span>`,
         `<span class="stat-value">${helper.round(value - data.base, 1).toLocaleString()}${suffix}</span>`,
         "<br/>",
-        `<span class='tippy-explanation'>Bonus value obtain from: <br>${tooltipBonus.join("<br>")}</span>`
+        `<span class='tippy-explanation'>额外增益来自: <br>${tooltipBonus.join("<br>")}</span>`
       );
     }
 
@@ -97,10 +97,10 @@ export class PlayerStat extends LitElement {
 
     switch (name) {
       case "pet":
-        name = "Active pet";
+        name = "使用的宠物";
         break;
       case "held item":
-        name = "Held item";
+        name = "手持的物品";
         break;
     }
 
