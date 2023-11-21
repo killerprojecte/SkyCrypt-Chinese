@@ -92,7 +92,7 @@
           if(profile.error) continue;
       %>
     <a href="/stats/<%= profile.uuid %>" class="top-profile">
-      <img src="https://visage.surgeplay.com/face/8/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : profile.uuid %>?no=cape,shadow,ears" class="profile-avatar" alt="">
+      <img src="https://mc-heads.net/avatar/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : profile.uuid %>/8" class="profile-avatar" alt="">
       <div class="favorite-profile-name">
         <%= profile.username %>
         <% if('emojiImg' in profile){ %>
@@ -117,7 +117,7 @@
 
     <% for(const profile of extra.featured){ %>
     <a href="/stats/<%= profile.uuid %>" class="top-profile">
-      <img src="https://visage.surgeplay.com/face/8/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : profile.uuid %>.png?no=cape,shadow,ears" class="profile-avatar" alt="">
+      <img src="https://mc-heads.net/avatar/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : profile.uuid %>/8" class="profile-avatar" alt="">
       <div class="profile-name">
         <%= profile.username %>
         <% if('emojiImg' in profile){ %>
