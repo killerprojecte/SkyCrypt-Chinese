@@ -461,7 +461,7 @@ app.all("/manifest.webmanifest", async (req, res) => {
     url: `/stats/${favorite.uuid}`,
     name: favorite.username,
     icons: [48, 72, 96, 144, 192, 512].map((size) => ({
-      src: `https://crafatar.com/avatars/${favorite.uuid}?size=${size}&overlay`,
+      src: `https://visage.surgeplay.com/face/${size}/${favorite.uuid}.png?no=cape,shadow,ears`,
       sizes: `${size}x${size}`,
       type: "image/png",
     })),

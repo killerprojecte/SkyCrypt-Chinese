@@ -604,10 +604,10 @@ const metaDescription = getMetaDescription()
 <head>
   <title><%= calculated.display_name %><% if(calculated.display_emoji){ %> <%= calculated.display_emoji %><% } %> | SkyCrypt 中文版</title>
   <meta name="description" content="<%= metaDescription %>">
-  <link rel="icon" href="https://crafatar.com/avatars/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : calculated.uuid %>?size=32&overlay" sizes="32x32" type="image/png">
+  <link rel="icon" href="https://visage.surgeplay.com/face/32/<%= extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : calculated.uuid %>?no=cape,shadow,ears" sizes="32x32" type="image/png">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="<%= metaTitle %>">
-  <meta property="og:image" content="https://crafatar.com/avatars/<%= calculated.uuid %>?size=512&overlay">
+  <meta property="og:image" content="https://visage.surgeplay.com/face/512/<%= calculated.uuid %>?no=cape,shadow,ears">
   <meta property="og:description" content="<%= description %>">
   <meta property="og:profile:username" content="<%= calculated.display_name %>">
   <meta name="twitter:card" content="summary">
@@ -1371,7 +1371,7 @@ const metaDescription = getMetaDescription()
               <div class="inventory-header-line"></div>
               <div class="inventory-tabs-container">
                 <%
-                    const inventoryIconUrl = `https://crafatar.com/renders/head/${extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : calculated.uuid }?size=32&overlay`
+                    const inventoryIconUrl = `https://mc-heads.net/avatar/${extra.isFoolsDay ? 'bd482739767c45dca1f8c33c40530952' : calculated.uuid }/32`
                   %>
                 <button class="inventory-tab active-inventory" data-inventory-type="inventory">
                   <div class="inventory-tab-icon item-icon custom-icon" style="background-image: url('<%= inventoryIconUrl %>')"></div>
